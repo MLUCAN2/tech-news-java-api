@@ -10,4 +10,5 @@ public class TechNewsJavaApiApplication {
 		SpringApplication.run(TechNewsJavaApiApplication.class, args);
 	}
 
+
 }
