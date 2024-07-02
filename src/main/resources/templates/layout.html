@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The Layout makes the title dynamically change, when the view changes, so will the title  -->
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Just Tech News</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>
+            <a href="/">Just Tech News</a>
+        </h1>
+        <nav>
+            <!-- th:if is a conditional statement, if the user is logged in then they will be directed to the dashboard 'unless' they are not then they
+                 will have to go to the log-in page-->
+            <div th:if="${loggedIn}">
+                <a th:href="@{/dashboard}">dashboard</a>
+                <a th:href="@{/users/logout}">logout</a>
+            </div>
+            <div th:unless="${loggedIn}">
+                <a th:href="@{/login}">login</a>
+            </div>
+        </nav>
+    </header>
+    <!--Allows other templates to be displayed, like {{{body}}} in handlebars-->
+    <main layout:fragment="content">
+        <p>This is filled by the content template.</p>
+    </main>
+
+    <footer>
+        Thanks for visiting!
+    </footer>
+</div>
+
+</body>
+</html>
